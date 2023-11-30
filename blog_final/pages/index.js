@@ -2,13 +2,12 @@ import Image from "next/image";
 import CreateBlog from "./components/CreateBlog";
 import NavBar from "./components/Navbar";
 import ShowBlog from "./components/ShowBlog";
+import landingPage from "./pages/landingPage";
+
 export default function Home() {
   return (
     <div className="bg-white">
-      <NavBar />
-      <div className="mt-20">
-        <ShowBlog />
-      </div>
+      <div className="mt-40 text-black"></div>
     </div>
   );
 }
