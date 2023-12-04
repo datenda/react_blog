@@ -3,13 +3,11 @@ import NavBar from "./components/Navbar";
 
 export default function Document() {
   return (
-    <Html className="bg-white" lang="en">
+    <Html lang="en">
       <Head />
       <body>
-        <div className="mt-16">
-          <Main />
-          <NextScript />
-        </div>
+        <Main />
+        <NextScript />
       </body>
     </Html>
   );

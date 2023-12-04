@@ -1,6 +1,5 @@
 import { connectMongoDB } from "../libs/mongoConnect";
-import Blog from "../models/blogModel";
-
+import Char from "../models/charModel";
 export default async function handler(req, res) {
   if (req.method !== "GET") {
     res.status(405).send({ msg: "Only GET" });
@@ -9,8 +8,8 @@ export default async function handler(req, res) {
 
   try {
     await connectMongoDB();
-    const blogs = await Blog.find();
-    res.status(200).send(blogs);
+    const chars = await Char.find();
+    res.status(200).send(chars);
   } catch (error) {
     console.log(error);
   }
