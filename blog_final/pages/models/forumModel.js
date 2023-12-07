@@ -9,16 +9,20 @@ const forumPostSchema = new Schema({
     type: String,
     required: true,
   },
-  content: { type: String, required: true },
-  date: {
-    type: Date, // Set the type to Date
-    default: Date.now, // Provide a default value (current timestamp)
-  },
-  tags: {
+  content: {
     type: String,
     required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  tags: {
+    type: [String], // Array of strings
+    required: true,
+  },
 });
+
 const ForumPost = models.ForumPost || model("ForumPost", forumPostSchema);
 
 export default ForumPost;
