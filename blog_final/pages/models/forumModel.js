@@ -1,5 +1,20 @@
 import { Schema, model, models } from "mongoose";
 
+const replySchema = new Schema({
+  user: {
+    type: String,
+    required: true,
+  },
+  content: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
 const forumPostSchema = new Schema({
   user: {
     type: String,
@@ -18,9 +33,10 @@ const forumPostSchema = new Schema({
     default: Date.now,
   },
   tags: {
-    type: [String], // Array of strings
+    type: [String],
     required: true,
   },
+  replies: [replySchema],
 });
 
 const ForumPost = models.ForumPost || model("ForumPost", forumPostSchema);

@@ -48,7 +48,8 @@ const Forum = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredBlogs.map((blog) => (
-          <div key={blog.id} className="mb-4 mx-20">
+          <div key={blog._id} className="mb-4 mx-20">
+            {console.log(blog)}
             <ShowBlog props={blog} />
           </div>
         ))}
