@@ -1,12 +1,13 @@
-"use client";
+// components/Login.js
 import React, { useState } from "react";
-import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import axios from "axios";
 
-const Register = () => {
+const Login = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     username: "",
-    email: "",
     password: "",
   });
 
@@ -21,16 +22,22 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      await axios.post("/api/register", formData);
+      await axios.post("/api/login", formData).then((data) => {
+        const token = data.data.token;
+        localStorage.setItem("token", token);
+        localStorage.setItem("username", formData.username);
+        router.push("/pages/forum");
+      });
     } catch (error) {
-      console.error("Error registering user:", error.message);
+      console.error("Error logging in:", error.message);
+      // Handle login error, e.g., display error message to the user
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
       <div className="bg-white p-8 rounded shadow-md w-96 mb-4">
-        <h2 className="text-2xl font-bold mb-4 text-black">Register</h2>
+        <h2 className="text-2xl font-bold mb-4 text-black">Login</h2>
         <form onSubmit={handleSubmit} className="text-black">
           <div className="mb-4">
             <label
@@ -44,22 +51,6 @@ const Register = () => {
               id="username"
               name="username"
               value={formData.username}
-              onChange={handleChange}
-              className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-600"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
               onChange={handleChange}
               className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             />
@@ -84,18 +75,18 @@ const Register = () => {
             type="submit"
             className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
           >
-            Register
+            Login
           </button>
         </form>
       </div>
       <div className="text-center mt-4">
-        Already have an account?
-        <Link href="/pages/login">
-          <div className="text-blue-500 underline">Login</div>
+        Don't have an account?
+        <Link href="/pages/sign_up">
+          <div className="text-blue-500 underline">Register</div>
         </Link>
       </div>
     </div>
   );
 };
 
-export default Register;
+export default Login;

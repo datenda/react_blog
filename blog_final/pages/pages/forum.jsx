@@ -32,10 +32,8 @@ const Forum = () => {
   };
 
   return (
-    <div className="bg-gray-100 h-screen w-full p-4 text-black">
-      <h1 className="text-3xl font-semibold mb-4">Forum</h1>
-
-      {/* Search bar */}
+    <div className="bg-gray-100 h-full w-full p-4 text-black">
+      <div className="text-3xl font-semibold mb-4">Forum</div>
       <div className="mb-4 flex items-center">
         <input
           type="text"
@@ -46,10 +44,9 @@ const Forum = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-screen">
         {filteredBlogs.map((blog) => (
           <div key={blog._id} className="mb-4 mx-20">
-            {console.log(blog)}
             <ShowBlog props={blog} />
           </div>
         ))}

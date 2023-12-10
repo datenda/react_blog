@@ -1,6 +1,5 @@
-import { ObjectId } from "mongodb";
+
 import { connectMongoDB } from "../../libs/mongoConnect";
-import ForumPost from "../../models/forumModel";
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
