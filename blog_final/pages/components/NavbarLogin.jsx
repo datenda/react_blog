@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { checkToken } from "../utils/auth";
+import { checkToken, removeToken } from "../utils/auth";
 import React, { useEffect, useState } from "react";
 
 const Navbar = () => {
@@ -22,6 +22,11 @@ const Navbar = () => {
     setHasToken(!!token);
   }, [router.pathname]);
 
+  const handleSignOut = () => {
+    removeToken();
+    setHasToken(false);
+  };
+
   return shouldShowNavbar ? (
     <nav className="bg-gray-800 p-4">
       <div className="flex items-center justify-between">
@@ -32,11 +37,19 @@ const Navbar = () => {
         </div>
         <div className="flex space-x-4">
           {hasToken ? (
-            <Link href="/pages/profile">
-              <div className="font-bold text-white bg-gray-900 px-4 py-2 rounded">
-                Profile
+            <>
+              <Link href="/pages/profile">
+                <div className="font-bold text-white bg-gray-900 px-4 py-2 rounded">
+                  Profile
+                </div>
+              </Link>
+              <div
+                className="cursor-pointer font-bold text-white bg-gray-900 px-4 py-2 rounded"
+                onClick={handleSignOut}
+              >
+                Sign Out
               </div>
-            </Link>
+            </>
           ) : (
             <>
               <Link href="/pages/sign_up">

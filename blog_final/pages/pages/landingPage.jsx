@@ -29,7 +29,7 @@ export default function LandingPage() {
             className="text-4xl font-bold "
             style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)" }}
           >
-            Your Website Title
+            Robo Shock
           </h1>
         </div>
       </div>

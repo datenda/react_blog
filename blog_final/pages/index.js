@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CreateBlog from "./components/CreateBlog";
+import CreateBlog from "./pages/createPost";
 import NavBar from "./components/Navbar";
 import ShowBlog from "./components/ShowForum";
 import landingPage from "./pages/landingPage";

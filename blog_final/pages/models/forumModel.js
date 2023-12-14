@@ -3,11 +3,9 @@ import { Schema, model, models } from "mongoose";
 const replySchema = new Schema({
   user: {
     type: String,
-    required: true,
   },
   content: {
     type: String,
-    required: true,
   },
   date: {
     type: Date,
