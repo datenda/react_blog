@@ -1,4 +1,4 @@
-
+import { ObjectId } from "mongodb";
 import { connectMongoDB } from "../../libs/mongoConnect";
 
 export default async function handler(req, res) {
@@ -13,13 +13,12 @@ export default async function handler(req, res) {
     res.status(400).send({ msg: "Thread ID is required" });
     return;
   }
-
   try {
     const mongoClient = await connectMongoDB();
 
     const forum = await mongoClient
       .collection("forumposts")
-      .findOne({ _id: threadId.threadID });
+      .findOne({ _id: new ObjectId(threadId.threadID) });
 
     if (forum) {
       res.status(200).json(forum);
