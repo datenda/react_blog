@@ -34,7 +34,7 @@ export default function LandingPage() {
         </div>
       </div>
       <div className="bg-[#150354] h-screen pt-4">
-        <div className="text-4xl"> Characters</div>
+        <div className="text-2xl"> Characters</div>
         <div className="flex flex-wrap justify-center mt-4">
           {chars.map((character) => (
             <ShowChar key={character._id} props={character} />
