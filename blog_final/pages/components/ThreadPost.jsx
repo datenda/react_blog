@@ -18,15 +18,14 @@ const Thread = ({ thread }) => {
     try {
       const response = await axios.put("/api/new_comment", {
         _id: thread._id,
-        user: "CurrentUserName",
+        user: localStorage.getItem("username"),
         content: newComment,
       });
 
       console.log("New comment added:", response.data);
 
-      // Create a new comment with a structure similar to existing comments
       const newCommentData = {
-        user: "test",
+        user: localStorage.getItem("username"),
         content: newComment,
         date: new Date(),
       };
