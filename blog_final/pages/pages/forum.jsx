@@ -1,13 +1,13 @@
-// Forum.js
-
 import React, { useEffect, useState } from "react";
 import ShowBlog from "../components/ShowForum";
 import Link from "next/link";
+import { checkToken } from "../utils/auth";
 
 const Forum = () => {
   const [allBlogs, setAllBlogs] = useState([]);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const isLoggedIn = checkToken();
 
   useEffect(() => {
     fetch("/api/get_forum")
@@ -31,14 +31,18 @@ const Forum = () => {
   };
 
   return (
-    <div className="bg-gray-100 h-full w-full p-4 text-black overflow-hidden">
+    <div className="bg-gray-100 h-screen w-full p-4 text-black overflow-hidden">
       <div className="flex justify-between items-center mb-4">
         <div className="text-3xl font-semibold">Forum</div>
-        <Link href="/pages/createPost">
-          <div className="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
-            Create Post
-          </div>
-        </Link>
+        {isLoggedIn ? (
+          <Link href="/pages/createPost">
+            <div className="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
+              Create Post
+            </div>
+          </Link>
+        ) : (
+          <div>Please log in to create a post.</div>
+        )}
       </div>
       <div className="mb-4 flex items-center">
         <input

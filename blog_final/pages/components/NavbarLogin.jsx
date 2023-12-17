@@ -23,6 +23,7 @@ const Navbar = () => {
   }, [router.pathname]);
 
   const handleSignOut = () => {
+    window.location.reload();
     removeToken();
     setHasToken(false);
   };

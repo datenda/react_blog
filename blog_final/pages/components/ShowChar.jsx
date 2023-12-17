@@ -9,8 +9,16 @@ export default function ShowChar({ props }) {
   };
 
   return (
-    <div className="w-36 h-full mx-auto rounded overflow-hidden shadow-lg">
-      <img className="w-full" src={image} alt={`image+ ${name}`} />
+    <div
+      className={`w-36 ${
+        isDropdownVisible ? "h-full" : "h-80"
+      } mx-auto rounded overflow-hidden shadow-lg`}
+    >
+      <img
+        className="w-full h-40 object-cover"
+        src={image}
+        alt={`image+ ${name}`}
+      />
       <div className="px-4 py-2">
         <div className="font-bold text-xs mb-1">{name}</div>
         <p className="text-gray-700 text-xs">{description}</p>

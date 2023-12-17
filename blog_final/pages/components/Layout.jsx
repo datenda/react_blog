@@ -1,4 +1,3 @@
-// components/Layout.js
 import NavbarLogin from "./NavbarLogin";
 
 const Layout = ({ children }) => {

@@ -7,14 +7,19 @@ const myFont = localFont({ src: "../PressStart2P-Regular.ttf" });
 
 export default function LandingPage() {
   const [chars, setChars] = useState([]);
+  const gameDescription =
+    "Dive into the expansive universe of 'Robo Shock,' an immersive sci-fi RPG MMO that thrusts you into a sprawling world teeming with futuristic marvels, perilous challenges, and a vibrant community of players.";
+
   useEffect(() => {
     // Fetch data from your API or wherever it's hosted
     fetch("/api/get_char") // Update the URL accordingly
       .then((response) => response.json())
-      .then((data) => setChars(data))
+      .then((data) => {
+        setChars(data);
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
-  console.log(chars);
+
   return (
     <div className={myFont.className}>
       <Navbar />
@@ -34,11 +39,18 @@ export default function LandingPage() {
         </div>
       </div>
       <div className="bg-[#150354] h-screen pt-4">
-        <div className="text-2xl"> Characters</div>
-        <div className="flex flex-wrap justify-center mt-4">
+        <div className="text-2xl text-center mb-4">Characters</div>
+        {/* Display the game description */}
+        <div className="container mx-auto max-w-6xl flex flex-wrap justify-center">
           {chars.map((character) => (
             <ShowChar key={character._id} props={character} />
           ))}
+        </div>
+        <div className="mx-auto max-w-6xl">
+          <div className="text-2xl text-center mt-10">Description</div>
+          <div className="text-white text-center mb-8 mt-2">
+            {gameDescription}
+          </div>
         </div>
       </div>
     </div>

@@ -34,16 +34,8 @@ const Navbar = () => {
       <div className="flex justify-between items-center">
         <div className="">
           <div className="flex space-x-4 items-center bg-black rounded-b-lg pt-4">
-            <button className="text-white hover:text-gray-300 focus:outline-none">
-              <Link href="/pages/wiki">Wiki</Link>
-            </button>{" "}
-            <div className="border-l border-white h-2 pt-4"></div>
-            <button className="text-white hover:text-gray-300 focus:outline-none">
+            <button className="text-white hover:text-gray-300 focus:outline-none mx-4">
               <Link href="/pages/forum">Forum</Link>
-            </button>
-            <div className="border-l border-white h-2 pt-4"></div>
-            <button className="text-white hover:text-gray-300 focus:outline-none">
-              <Link href="/pages/about_us">About Us</Link>
             </button>
           </div>
         </div>

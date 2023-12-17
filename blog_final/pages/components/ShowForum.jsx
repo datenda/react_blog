@@ -7,7 +7,7 @@ const ForumPostComponent = ({ props }) => {
   return (
     <Link href={`/pages/${props._id}`} passHref>
       <div className="text-black">
-        <div className="bg-white rounded-lg p-4 shadow-md m-2 h-full">
+        <div className="bg-white rounded-lg p-4 shadow-md m-2 ">
           <div className="flex flex-col h-full">
             <h3 className="text-xl font-semibold mb-2">{props.title}</h3>
 

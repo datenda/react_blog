@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars";
 import { checkToken } from "../utils/auth";
 import axios from "axios";
-
+import Link from "next/link";
 const Thread = ({ thread }) => {
   const { user, title, content, date, replies } = thread;
   const [list, setList] = useState(replies);
@@ -40,9 +40,7 @@ const Thread = ({ thread }) => {
     }
   };
 
-  const handleRedirectToLogin = () => {
-    console.log("Redirecting to login...");
-  };
+  const handleRedirectToLogin = () => {};
 
   return (
     <div className="w-full md:w-2/3 mx-auto p-4 bg-white h-screen rounded-md shadow-md my-4 bg-opacity-75">
@@ -69,12 +67,10 @@ const Thread = ({ thread }) => {
                   className="bg-gray-100 p-4 mb-6 rounded-md"
                 >
                   <div className="md:flex">
-                    {/* Display user on the left for larger screens */}
                     <div className="">
                       <div className="font-bold text-black">{reply.user}</div>
                     </div>
 
-                    {/* Display date and text underneath the username for smaller screens */}
                     <div className="md:ml-4 text-black">
                       <div className="text-gray-500">
                         {new Date(reply.date).toLocaleString("en-US", {
@@ -98,7 +94,6 @@ const Thread = ({ thread }) => {
         </Scrollbars>
 
         {token ? (
-          // Render comment input and submit button if a token is present
           <>
             <textarea
               value={newComment}
@@ -116,12 +111,14 @@ const Thread = ({ thread }) => {
         ) : (
           <div className="mt-4">
             <p>You must be logged in to leave a comment.</p>
-            <button
-              onClick={handleRedirectToLogin}
-              className="mt-2 bg-blue-500 text-white p-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
-            >
-              Log In
-            </button>
+            <Link href="/pages/login">
+              <button
+                onClick={handleRedirectToLogin}
+                className="mt-2 bg-blue-500 text-white p-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
+              >
+                Log In
+              </button>
+            </Link>
           </div>
         )}
       </div>

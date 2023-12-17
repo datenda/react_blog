@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { threadID } = req.query; // Extract threadID from query parameters
+  const { threadID } = req.query;
 
   if (!threadID) {
     res.status(400).send({ msg: "Thread ID is required" });
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 
     const forum = await mongoClient
       .collection("forumposts")
-      .findOne({ _id: new ObjectId(threadID) }); // Use threadID directly
+      .findOne({ _id: new ObjectId(threadID) });
     console.log(forum);
     if (forum) {
       res.status(200).json(forum);
