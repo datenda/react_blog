@@ -47,7 +47,7 @@ export default function LandingPage() {
           ))}
         </div>
         <div className="mx-auto max-w-6xl">
-          <div className="text-2xl text-center mt-10">Description</div>
+          <div className="text-2xl text-center mt-3 sm:mt-10">Description</div>
           <div className="text-white text-center mb-8 mt-2">
             {gameDescription}
           </div>
