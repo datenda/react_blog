@@ -83,7 +83,3 @@ A simple blog forum built with Next.js, offering essential features for threaded
    yarn build
    yarn start
    ```
-
----
-
-This concise "How to Run" guide fits perfectly into your GitHub description.
