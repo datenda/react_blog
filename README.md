@@ -1,7 +1,3 @@
-Here’s a GitHub-friendly description for your Next.js blog forum project:
-
----
-
 ### Next.js Blog Forum
 
 **Overview:**  
